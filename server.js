@@ -78,7 +78,7 @@ app.post('/register', (req, res) => {
                         joined: new Date()
                     })
                     .then(user => {
-                        res.status(200).json(user);
+                        res.status(200).json(user[0]);
                     })
             })
             .then(trx.commit)
