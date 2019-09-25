@@ -8,15 +8,13 @@ const signin = require('./controller/signin');
 const profile = require('./controller/profile');
 const image = require('./controller/image');
 
-const DB_URL = process.env.DB_URL || 'postgresql-slippery-78352';
+const DB_URL = process.env.DATABASE_URL;
 
 const db = knex ({
     client: 'pg',
     connection: {
         host: DB_URL,
-        user: '',
-        password: '',
-        database: 'smart-brain'
+        ssl: true
     }
 });
 
