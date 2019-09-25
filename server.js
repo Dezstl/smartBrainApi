@@ -8,8 +8,7 @@ const signin = require('./controller/signin');
 const profile = require('./controller/profile');
 const image = require('./controller/image');
 
-const PORT = process.env.PORT;
-const DB_URL = process.env.DB_URL || '127.0.0.1';
+const DB_URL = process.env.DB_URL || 'postgresql-slippery-78352';
 
 const db = knex ({
     client: 'pg',
@@ -39,6 +38,9 @@ app.get('/profile/:userId', (req, res) => profile.profileHandeler(req, res, db))
 app.put('/image', (req, res) => image.imageHandler(req, res, db))
 
 app.post('/image', (req, res) => image.apiCallHandler(req, res))
+
+
+const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
     console.log("app is running on port " + PORT);
