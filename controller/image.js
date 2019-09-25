@@ -1,0 +1,15 @@
+const imageHandler = (req, res, db) => {
+
+    const { id } = req.body;
+    db('users').where('id', '=', id).increment('entries', 1)
+        .returning('entries')
+        .then(entires => {
+            res.status(200).json(entires);
+        })
+        .catch(err => res.status(400).json('Unable to increase entries'))
+
+}
+
+module.exports = {
+    imageHandler: imageHandler
+}
